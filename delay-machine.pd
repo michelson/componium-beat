@@ -1,0 +1,189 @@
+#N canvas 461 187 819 484 10;
+#X text 295 17 asociando controles midi para controlar los knobs;
+#X obj 409 134 ctlin;
+#X floatatom 421 190 5 0 0 0 - - -;
+#X floatatom 389 171 5 0 0 0 - - -;
+#X floatatom 482 170 5 0 0 0 - - -;
+#X obj 329 271 notein;
+#X floatatom 337 316 5 0 0 0 - - -;
+#X floatatom 296 318 5 0 0 0 - - -;
+#X floatatom 393 324 5 0 0 0 - - -;
+#X floatatom 143 356 5 0 0 0 - - -;
+#X floatatom 214 398 5 0 0 0 - - -;
+#X obj 121 402 ctlout;
+#X floatatom 73 373 5 0 0 0 - - -;
+#X text 568 511 updated for Pd version 0.26;
+#X floatatom 199 481 0 0 0 0 - - -;
+#N canvas 159 26 495 266 output 0;
+#X obj 338 160 t b;
+#X obj 338 110 f;
+#X obj 338 60 inlet;
+#X text 344 29 mute;
+#X obj 338 185 f;
+#X msg 425 178 0;
+#X msg 338 85 bang;
+#X obj 338 135 moses 1;
+#X obj 425 153 t b f;
+#X obj 397 117 moses 1;
+#X obj 83 148 dbtorms;
+#X obj 397 92 r master-lvl;
+#X obj 83 42 r master-lvl;
+#X obj 338 210 s master-lvl;
+#X obj 22 181 inlet~;
+#X obj 199 41 inlet;
+#X text 199 18 level;
+#X obj 199 100 s master-lvl;
+#X msg 96 65 set \$1;
+#X obj 96 89 outlet;
+#X msg 214 64 \; pd dsp 1;
+#X obj 83 194 line~;
+#X obj 22 212 *~;
+#X obj 22 241 dac~;
+#X obj 83 171 pack 0 50;
+#X text 20 158 audio;
+#X text 93 110 show level;
+#X connect 0 0 4 0;
+#X connect 1 0 7 0;
+#X connect 2 0 6 0;
+#X connect 4 0 13 0;
+#X connect 5 0 13 0;
+#X connect 6 0 1 0;
+#X connect 7 0 0 0;
+#X connect 7 1 8 0;
+#X connect 8 0 5 0;
+#X connect 9 1 4 1;
+#X connect 10 0 24 0;
+#X connect 11 0 1 1;
+#X connect 11 0 9 0;
+#X connect 12 0 10 0;
+#X connect 12 0 18 0;
+#X connect 14 0 22 0;
+#X connect 15 0 17 0;
+#X connect 15 0 20 0;
+#X connect 18 0 19 0;
+#X connect 21 0 22 1;
+#X connect 22 0 23 0;
+#X connect 22 0 23 1;
+#X connect 24 0 21 0;
+#X restore 174 509 pd output;
+#X msg 232 481 MUTE;
+#X text 271 480 <-- output amplitude;
+#N canvas 603 95 600 392 conversion-tables 0;
+#X obj 26 130 loadbang;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array dbtorms 123 float 0;
+#X coords 0 10 123 0 200 100 1;
+#X restore 302 48 graph;
+#X text 504 141 0;
+#X text 506 41 10;
+#X text 321 151 ------ 123 samples ------;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array mtof 130 float 0;
+#X coords 0 12000 130 0 200 100 1;
+#X restore 309 225 graph;
+#X text 319 333 ------ 130 samples ------;
+#X text 518 318 0;
+#X text 520 218 12000;
+#X msg 35 205 \; dbtorms read \$0-dbtorms.txt \; mtof read \$0-mtof.txt
+;
+#X text 29 171 enlace comentado;
+#X restore 617 412 pd conversion-tables;
+#X obj 174 457 hip~ 5;
+#X text 233 -13 DELAYS;
+#X obj 174 428 +~;
+#X floatatom 190 376 0 0 0 0 - - -;
+#X text 351 12 You can delay a signal using the delwrite~ and delread~
+objects. In this example \, the pitch of the oscillator is varying
+slightly so that the delayed signal is different from the straight
+signal.;
+#X text 353 74 delread always delays the signal an integer number of
+samples and does no interpolation.;
+#X text 352 112 The delwrite~ object creates the delay line \; you
+give it a name and a size in milliseconds. Each delwrite~ should have
+a different name.;
+#X text 350 159 Delread~'s arguments are the name of a delwrite (of
+which there should be exactly one) and a delay time in milliseconds
+between 0 and the length of the delay line. Each delwrite~ may have
+as many delread~s as you wish \, which function as multiple delay taps.
+;
+#X text 224 376 <-- delay time;
+#X text 387 348 write to delay line;
+#X text 378 402 read from delay line;
+#X text 208 429 add the original and the delayed signal;
+#X obj 154 238 adc~;
+#X obj 441 376 *~ 0.7;
+#X obj 313 81 vsl 15 128 0 1 0 0 empty empty delay_feedback -30 -20
+0 10 -262144 -1 -1 0 1;
+#X obj 170 279 *~;
+#X obj 286 82 vsl 15 128 0 1 0 0 empty empty input_amplitude -30 -20
+0 10 -262144 -1 -1 12700 1;
+#X obj 526 280 loadbang;
+#X msg 482 312 0.7;
+#X msg 526 311 85;
+#X msg 566 312 867;
+#X obj 186 76 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
+-33289 -1 0 1;
+#X obj 185 130 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 3100 1;
+#X obj 45 77 hsl 50 20 0 127 0 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 4553 1;
+#X text 37 59 level;
+#X obj 44 108 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj -8 94 inlet;
+#X obj -9 71 inlet;
+#X obj -9 47 inlet;
+#X obj 149 135 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
+-260097 -1 1 256;
+#X obj 149 82 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
+-260097 -1 0 256;
+#X obj 44 145 nbx 3 14 0 1000 0 0 empty empty empty 0 -8 0 10 -4034
+-262144 -1 981 256;
+#X obj 185 349 delwrite~ \$0-delay 2000;
+#X obj 190 401 delread~ \$0-delay 1000;
+#X text 87 143 Delay ms;
+#X text 65 108 Fade out;
+#X text 144 110 Input amplitude;
+#X text 149 57 Delay feedback;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X connect 1 2 4 0;
+#X connect 5 0 7 0;
+#X connect 5 1 6 0;
+#X connect 5 2 8 0;
+#X connect 9 0 11 1;
+#X connect 10 0 11 2;
+#X connect 12 0 11 0;
+#X connect 14 0 15 1;
+#X connect 15 0 14 0;
+#X connect 16 0 15 2;
+#X connect 19 0 15 0;
+#X connect 21 0 19 0;
+#X connect 22 0 52 0;
+#X connect 31 0 34 0;
+#X connect 31 1 34 0;
+#X connect 32 0 51 0;
+#X connect 33 0 32 1;
+#X connect 34 0 21 0;
+#X connect 34 0 51 0;
+#X connect 35 0 34 1;
+#X connect 36 0 37 0;
+#X connect 36 0 39 0;
+#X connect 36 0 38 0;
+#X connect 37 0 33 0;
+#X connect 37 0 35 0;
+#X connect 38 0 14 0;
+#X connect 39 0 22 0;
+#X connect 40 0 33 0;
+#X connect 40 0 49 0;
+#X connect 41 0 35 0;
+#X connect 41 0 48 0;
+#X connect 42 0 14 0;
+#X connect 44 0 37 0;
+#X connect 45 0 41 0;
+#X connect 46 0 40 0;
+#X connect 47 0 42 0;
+#X connect 50 0 22 0;
+#X connect 52 0 21 1;
+#X connect 52 0 32 0;
+#X coords 0 -1 1 1 210 125 1 34 47;
