@@ -1,7 +1,7 @@
 #N canvas 441 55 823 568 12;
 #N canvas 1 22 450 300 (subpatch) 0;
-#X array \$0-array1 1.06214e+06 float 2;
-#X coords 0 1 1.06214e+06 -1 200 30 1;
+#X array \$0-array1 2.64269e+06 float 2;
+#X coords 0 1 2.64269e+06 -1 200 30 1;
 #X restore 457 259 graph;
 #X obj 49 77 openpanel;
 #X obj 459 151 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
@@ -11,18 +11,18 @@
 #X floatatom 47 390 5 0 0 0 - - -;
 #X obj 47 485 phasor~;
 #X obj 459 298 hsl 200 15 0 1 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 2031 1;
+-1 -1 12215 1;
 #X text 457 321 0;
 #X text 650 318 1;
 #X obj 47 458 *;
 #X obj 482 152 hsl 128 15 -2 2 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 12100 1;
+-1 -1 9200 1;
 #X text 479 166 -2;
 #X text 604 166 2;
 #X obj 461 222 hsl 200 15 0 1 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 6400 1;
+-1 -1 12300 1;
 #X obj 461 201 hsl 200 15 0 1 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 0 1;
+-1 -1 9300 1;
 #X obj 47 519 +~;
 #X obj 198 439 -;
 #X floatatom 198 405 5 0 0 0 - - -;
@@ -58,7 +58,7 @@
 #X obj 181 211 print hola!;
 #X obj 48 763 outlet~;
 #X obj 113 762 outlet~;
-#X text 104 733;
+#X text 104 733 comment;
 #X obj 552 105 soundoutput;
 #X connect 1 0 44 0;
 #X connect 1 0 46 0;
