@@ -1,4 +1,4 @@
-#N canvas 563 87 682 548 10;
+#N canvas 524 57 682 548 10;
 #X declare -lib mrpeach/udpsend;
 #X declare -lib mrpeach/packOSC;
 #X obj 295 76 loadbang;
