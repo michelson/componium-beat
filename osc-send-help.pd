@@ -1,0 +1,68 @@
+#N canvas 85 33 495 432 10;
+#X declare -lib mrpeach/udpsend;
+#X declare -lib mrpeach/packOSC;
+#X declare -lib mrpeach/udpsend;
+#X declare -lib mrpeach/packOSC;
+#X msg 55 129 localhost 3004;
+#X obj 54 30 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 277 -104 /test \$1;
+#X obj 205 -121 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 9800 1;
+#X obj 133 -120 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4800 1;
+#X obj 159 -120 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7300 1;
+#X obj 107 -119 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 8900 1;
+#X obj 55 -118 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2000 1;
+#X obj 80 -119 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6400 1;
+#X msg 121 95 /test/v \$1;
+#X obj 168 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 208 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 1300 1;
+#X obj 89 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 2400 1;
+#X obj 129 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 3100 1;
+#X obj 292 99 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 211 153 cnv 15 240 100 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X text 223 174 Connects default port to localhost 3003 first inlet
+for connet to other ip:port Second inlet to send numers and Third inlet
+to send symbols;
+#X msg 294 121 /test helo!;
+#X obj 81 151 osc-send;
+#X obj 281 -62 osc-send;
+#X msg 345 -105 /test/v \$1;
+#X obj 339 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 261 75 random 5000;
+#X obj 339 91 metro 0.0002;
+#X text 358 69 this is very fast!!;
+#X text 178 267 Miguel Michelson Martinez \, under MIT license.;
+#X connect 0 0 18 0;
+#X connect 1 0 0 0;
+#X connect 2 0 19 1;
+#X connect 3 0 20 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 6 0 2 0;
+#X connect 7 0 2 0;
+#X connect 8 0 2 0;
+#X connect 9 0 18 1;
+#X connect 10 0 9 0;
+#X connect 11 0 9 0;
+#X connect 12 0 9 0;
+#X connect 13 0 9 0;
+#X connect 14 0 17 0;
+#X connect 17 0 18 2;
+#X connect 20 0 19 1;
+#X connect 21 0 23 0;
+#X connect 22 0 9 0;
+#X connect 23 0 17 0;
+#X connect 23 0 22 0;
