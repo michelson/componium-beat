@@ -8,7 +8,7 @@
 #X obj 5 96 import mrpeach/routeOSC;
 #X obj 7 163 unpackOSC;
 #X obj 7 299 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3800 1;
+-1 -1 9500 1;
 #X floatatom 7 271 5 0 0 0 - - -;
 #X obj 45 271 print /v;
 #X obj 121 270 print /test;
@@ -18,16 +18,16 @@
 #X obj 82 199 routeOSC /test;
 #X obj 50 340 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 7 136 udpreceive 3002;
 #X obj 217 143 print;
 #X obj 233 188 print 2;
+#X obj 7 137 udpreceive \$1;
 #X connect 3 0 8 0;
 #X connect 3 0 11 0;
-#X connect 3 0 15 0;
+#X connect 3 0 14 0;
 #X connect 5 0 4 0;
 #X connect 5 0 12 0;
 #X connect 8 0 6 0;
 #X connect 8 0 5 0;
 #X connect 11 0 7 0;
-#X connect 13 0 3 0;
-#X connect 13 1 14 0;
+#X connect 15 0 3 0;
+#X connect 15 1 13 0;

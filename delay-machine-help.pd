@@ -1,0 +1,9 @@
+#N canvas 109 140 935 397 10;
+#X obj 82 54 delay-machine;
+#X obj 296 54 delay-machine;
+#X obj 511 54 delay-machine;
+#X obj 82 183 delay-machine;
+#X text 310 191 Abstraction to delay a input sound \, it have a soundinput
+and sound output and the delay feedback \, if no sound input \, there
+is no loop so you can make many of this boxes to delay various sounds
+;

@@ -1,17 +1,5 @@
-#N canvas 364 74 883 597 10;
+#N canvas 397 86 883 597 10;
 #X text 295 17 asociando controles midi para controlar los knobs;
-#X obj 409 134 ctlin;
-#X floatatom 421 190 5 0 0 0 - - -;
-#X floatatom 389 171 5 0 0 0 - - -;
-#X floatatom 482 170 5 0 0 0 - - -;
-#X obj 329 271 notein;
-#X floatatom 337 316 5 0 0 0 - - -;
-#X floatatom 296 318 5 0 0 0 - - -;
-#X floatatom 393 324 5 0 0 0 - - -;
-#X floatatom 143 356 5 0 0 0 - - -;
-#X floatatom 214 398 5 0 0 0 - - -;
-#X obj 121 402 ctlout;
-#X floatatom 73 373 5 0 0 0 - - -;
 #X text 568 511 updated for Pd version 0.26;
 #X floatatom 174 495 0 0 0 0 - - -;
 #N canvas 159 26 495 266 output 0;
@@ -88,9 +76,8 @@
 ;
 #X text 29 171 enlace comentado;
 #X restore 617 412 pd conversion-tables;
-#X obj 174 457 hip~ 5;
 #X text 233 -13 DELAYS;
-#X obj 174 428 +~;
+#X obj 79 272 +~;
 #X floatatom 190 376 0 0 0 0 - - -;
 #X text 351 12 You can delay a signal using the delwrite~ and delread~
 objects. In this example \, the pitch of the oscillator is varying
@@ -107,82 +94,70 @@ between 0 and the length of the delay line. Each delwrite~ may have
 as many delread~s as you wish \, which function as multiple delay taps.
 ;
 #X text 224 376 <-- delay time;
-#X text 387 348 write to delay line;
+#X text 254 315 write to delay line;
 #X text 378 402 read from delay line;
 #X text 208 429 add the original and the delayed signal;
-#X obj 154 238 adc~;
 #X obj 441 376 *~ 0.7;
 #X obj 313 81 vsl 15 128 0 1 0 0 empty empty delay_feedback -30 -20
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 12700 1;
 #X obj 170 279 *~;
 #X obj 286 82 vsl 15 128 0 1 0 0 empty empty input_amplitude -30 -20
-0 10 -262144 -1 -1 0 1;
-#X obj 526 280 loadbang;
-#X msg 482 312 0.7;
-#X msg 526 311 85;
-#X msg 566 312 867;
+0 10 -262144 -1 -1 8890 1;
+#X obj 298 259 loadbang;
+#X msg 254 291 0.7;
+#X msg 298 290 85;
+#X msg 338 291 867;
 #X obj 195 76 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
--33289 -1 0 1;
-#X obj 194 130 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
+-33289 -1 3100 1;
+#X obj 664 304 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 84 496 hsl 50 20 0 127 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 200 1;
+-1 -1 0 1;
 #X text 76 478 level;
 #X obj 44 124 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj -8 94 inlet;
 #X obj -9 71 inlet;
-#X obj 158 135 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
--260097 -1 0 256;
 #X obj 158 82 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
--260097 -1 0 256;
+-260097 -1 1 256;
 #X obj 44 148 nbx 3 14 0 1000 0 0 empty empty empty 0 -8 0 10 -4034
--262144 -1 0 256;
+-262144 -1 867 256;
 #X obj 185 349 delwrite~ \$0-delay 2000;
 #X obj 190 401 delread~ \$0-delay 1000;
-#X text 88 146 Delay ms;
+#X text 82 146 Delay ms;
 #X text 65 124 Fade out;
 #X text 153 110 Input amplitude;
 #X text 158 57 Delay feedback;
 #X obj 40 74 soundoutput;
-#X connect 1 0 3 0;
-#X connect 1 1 2 0;
-#X connect 1 2 4 0;
-#X connect 5 0 7 0;
-#X connect 5 1 6 0;
-#X connect 5 2 8 0;
-#X connect 9 0 11 1;
-#X connect 10 0 11 2;
-#X connect 12 0 11 0;
-#X connect 14 0 15 1;
-#X connect 15 0 14 0;
-#X connect 16 0 15 2;
-#X connect 19 0 56 0;
-#X connect 19 0 56 1;
-#X connect 21 0 19 0;
-#X connect 22 0 51 0;
-#X connect 31 0 34 0;
-#X connect 31 1 34 0;
-#X connect 32 0 50 0;
-#X connect 33 0 32 1;
-#X connect 34 0 21 0;
-#X connect 34 0 50 0;
-#X connect 35 0 34 1;
-#X connect 36 0 37 0;
-#X connect 36 0 39 0;
-#X connect 36 0 38 0;
-#X connect 37 0 33 0;
-#X connect 37 0 35 0;
-#X connect 39 0 22 0;
-#X connect 40 0 33 0;
-#X connect 40 0 48 0;
-#X connect 41 0 35 0;
-#X connect 41 0 47 0;
-#X connect 42 0 14 0;
-#X connect 44 0 37 0;
-#X connect 45 0 41 0;
-#X connect 46 0 40 0;
-#X connect 49 0 22 0;
-#X connect 51 0 21 1;
-#X connect 51 0 32 0;
+#X obj 80 454 hip~ 2;
+#X obj 132 129 soundinput;
+#X connect 2 0 3 1;
+#X connect 3 0 2 0;
+#X connect 4 0 3 2;
+#X connect 8 0 40 0;
+#X connect 8 0 40 1;
+#X connect 8 0 41 0;
+#X connect 9 0 35 0;
+#X connect 18 0 34 0;
+#X connect 19 0 18 1;
+#X connect 20 0 8 0;
+#X connect 20 0 34 0;
+#X connect 21 0 20 1;
+#X connect 22 0 23 0;
+#X connect 22 0 25 0;
+#X connect 22 0 24 0;
+#X connect 23 0 19 0;
+#X connect 23 0 21 0;
+#X connect 25 0 9 0;
+#X connect 25 0 33 0;
+#X connect 26 0 19 0;
+#X connect 26 0 32 0;
+#X connect 27 0 21 0;
+#X connect 28 0 2 0;
+#X connect 30 0 23 0;
+#X connect 31 0 26 0;
+#X connect 33 0 9 0;
+#X connect 35 0 8 1;
+#X connect 35 0 18 0;
+#X connect 42 0 20 0;
+#X connect 42 1 20 0;
 #X coords 0 -1 1 1 210 125 1 34 47;
