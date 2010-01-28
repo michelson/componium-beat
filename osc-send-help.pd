@@ -1,4 +1,4 @@
-#N canvas 97 36 502 461 10;
+#N canvas 64 66 502 461 10;
 #X declare -lib mrpeach/udpsend;
 #X declare -lib mrpeach/packOSC;
 #X declare -lib mrpeach/udpsend;
@@ -8,26 +8,26 @@
 -1;
 #X msg 421 -83 /test \$1;
 #X obj 250 -118 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9800 1;
+-1 -1 8200 1;
 #X obj 353 -118 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4800 1;
+-1 -1 6900 1;
 #X obj 379 -117 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7300 1;
+-1 -1 9400 1;
 #X obj 327 -118 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 8900 1;
 #X obj 275 -118 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2000 1;
+-1 -1 4500 1;
 #X obj 300 -118 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 6400 1;
 #X msg 120 126 /test/v \$1;
 #X obj 168 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 1700 1;
 #X obj 208 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 1300 1;
+-1 -1 3100 1;
 #X obj 89 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
 -1 -1 2400 1;
 #X obj 129 32 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 3100 1;
+-1 -1 900 1;
 #X obj 191 84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 211 153 cnv 15 240 100 empty empty empty 20 12 0 14 -233017
@@ -37,7 +37,6 @@ for connet to other ip:port Second inlet to send numers and Third inlet
 to send symbols;
 #X msg 191 127 /test helo!;
 #X obj 81 151 osc-send;
-#X obj 30 -51 osc-send;
 #X msg 166 -90 /test/v \$1;
 #X obj 292 83 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -45,10 +44,11 @@ to send symbols;
 #X obj 292 104 metro 0.0002;
 #X text 312 82 this is very fast!!;
 #X text 178 267 Miguel Michelson Martinez \, under MIT license.;
+#X obj 30 -51 osc-send;
 #X connect 0 0 18 0;
 #X connect 1 0 0 0;
-#X connect 2 0 19 1;
-#X connect 3 0 20 0;
+#X connect 2 0 25 1;
+#X connect 3 0 19 0;
 #X connect 4 0 2 0;
 #X connect 5 0 2 0;
 #X connect 6 0 2 0;
@@ -61,8 +61,8 @@ to send symbols;
 #X connect 13 0 9 0;
 #X connect 14 0 17 0;
 #X connect 17 0 18 2;
-#X connect 20 0 19 1;
-#X connect 21 0 23 0;
-#X connect 22 0 9 0;
-#X connect 23 0 17 0;
-#X connect 23 0 22 0;
+#X connect 19 0 25 1;
+#X connect 20 0 22 0;
+#X connect 21 0 9 0;
+#X connect 22 0 17 0;
+#X connect 22 0 21 0;

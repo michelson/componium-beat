@@ -1,4 +1,4 @@
-#N canvas 461 187 819 484 10;
+#N canvas 364 74 883 597 10;
 #X text 295 17 asociando controles midi para controlar los knobs;
 #X obj 409 134 ctlin;
 #X floatatom 421 190 5 0 0 0 - - -;
@@ -13,7 +13,7 @@
 #X obj 121 402 ctlout;
 #X floatatom 73 373 5 0 0 0 - - -;
 #X text 568 511 updated for Pd version 0.26;
-#X floatatom 199 481 0 0 0 0 - - -;
+#X floatatom 174 495 0 0 0 0 - - -;
 #N canvas 159 26 495 266 output 0;
 #X obj 338 160 t b;
 #X obj 338 110 f;
@@ -65,8 +65,8 @@
 #X connect 22 0 23 0;
 #X connect 22 0 23 1;
 #X connect 24 0 21 0;
-#X restore 174 509 pd output;
-#X msg 232 481 MUTE;
+#X restore 149 523 pd output;
+#X msg 207 495 MUTE;
 #X text 271 480 <-- output amplitude;
 #N canvas 603 95 600 392 conversion-tables 0;
 #X obj 26 130 loadbang;
@@ -116,35 +116,35 @@ as many delread~s as you wish \, which function as multiple delay taps.
 0 10 -262144 -1 -1 0 1;
 #X obj 170 279 *~;
 #X obj 286 82 vsl 15 128 0 1 0 0 empty empty input_amplitude -30 -20
-0 10 -262144 -1 -1 12700 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 526 280 loadbang;
 #X msg 482 312 0.7;
 #X msg 526 311 85;
 #X msg 566 312 867;
-#X obj 186 76 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
+#X obj 195 76 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
 -33289 -1 0 1;
-#X obj 185 130 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 3100 1;
-#X obj 45 77 hsl 50 20 0 127 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 4553 1;
-#X text 37 59 level;
-#X obj 44 108 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 194 130 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 84 496 hsl 50 20 0 127 0 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 200 1;
+#X text 76 478 level;
+#X obj 44 124 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj -8 94 inlet;
 #X obj -9 71 inlet;
-#X obj -9 47 inlet;
-#X obj 149 135 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
--260097 -1 1 256;
-#X obj 149 82 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
+#X obj 158 135 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
 -260097 -1 0 256;
-#X obj 44 145 nbx 3 14 0 1000 0 0 empty empty empty 0 -8 0 10 -4034
--262144 -1 981 256;
+#X obj 158 82 nbx 2 14 0 1 0 0 empty empty empty 0 -8 0 10 -257985
+-260097 -1 0 256;
+#X obj 44 148 nbx 3 14 0 1000 0 0 empty empty empty 0 -8 0 10 -4034
+-262144 -1 0 256;
 #X obj 185 349 delwrite~ \$0-delay 2000;
 #X obj 190 401 delread~ \$0-delay 1000;
-#X text 87 143 Delay ms;
-#X text 65 108 Fade out;
-#X text 144 110 Input amplitude;
-#X text 149 57 Delay feedback;
+#X text 88 146 Delay ms;
+#X text 65 124 Fade out;
+#X text 153 110 Input amplitude;
+#X text 158 57 Delay feedback;
+#X obj 40 74 soundoutput;
 #X connect 1 0 3 0;
 #X connect 1 1 2 0;
 #X connect 1 2 4 0;
@@ -157,33 +157,32 @@ as many delread~s as you wish \, which function as multiple delay taps.
 #X connect 14 0 15 1;
 #X connect 15 0 14 0;
 #X connect 16 0 15 2;
-#X connect 19 0 15 0;
+#X connect 19 0 56 0;
+#X connect 19 0 56 1;
 #X connect 21 0 19 0;
-#X connect 22 0 52 0;
+#X connect 22 0 51 0;
 #X connect 31 0 34 0;
 #X connect 31 1 34 0;
-#X connect 32 0 51 0;
+#X connect 32 0 50 0;
 #X connect 33 0 32 1;
 #X connect 34 0 21 0;
-#X connect 34 0 51 0;
+#X connect 34 0 50 0;
 #X connect 35 0 34 1;
 #X connect 36 0 37 0;
 #X connect 36 0 39 0;
 #X connect 36 0 38 0;
 #X connect 37 0 33 0;
 #X connect 37 0 35 0;
-#X connect 38 0 14 0;
 #X connect 39 0 22 0;
 #X connect 40 0 33 0;
-#X connect 40 0 49 0;
+#X connect 40 0 48 0;
 #X connect 41 0 35 0;
-#X connect 41 0 48 0;
+#X connect 41 0 47 0;
 #X connect 42 0 14 0;
 #X connect 44 0 37 0;
 #X connect 45 0 41 0;
 #X connect 46 0 40 0;
-#X connect 47 0 42 0;
-#X connect 50 0 22 0;
-#X connect 52 0 21 1;
-#X connect 52 0 32 0;
+#X connect 49 0 22 0;
+#X connect 51 0 21 1;
+#X connect 51 0 32 0;
 #X coords 0 -1 1 1 210 125 1 34 47;
